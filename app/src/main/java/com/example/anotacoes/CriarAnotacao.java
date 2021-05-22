@@ -10,7 +10,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-//import com.example.naytonwilkerson.minhasanotacoes.bancodedados.BancoDeDados;
+
+import bancodedados.BancoDeDados;
+
 
 public class CriarAnotacao extends AppCompatActivity {
 
@@ -36,7 +38,7 @@ public class CriarAnotacao extends AppCompatActivity {
                     Toast.LENGTH_LONG).show();
         }else {
 
-            /*BancoDeDados bancoDeDados = new BancoDeDados(getBaseContext());
+            BancoDeDados bancoDeDados = new BancoDeDados(getBaseContext());
             boolean resultado = bancoDeDados.criarAnotacao(titulo.getText().toString(),
                     conteudo.getText().toString());
 
@@ -47,7 +49,7 @@ public class CriarAnotacao extends AppCompatActivity {
             }else{
                 Toast.makeText(getApplicationContext(), "Infelizmente ocorreu um erro, tente novamente!",
                         Toast.LENGTH_LONG).show();
-            }*/
+            }
 
         }
 

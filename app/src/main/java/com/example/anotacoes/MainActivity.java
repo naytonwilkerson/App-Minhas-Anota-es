@@ -13,10 +13,10 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
+import bancodedados.BancoDeDados;
 
 
 public class MainActivity extends AppCompatActivity {
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,8 +24,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-
-       /* BancoDeDados bancoDeDados = new BancoDeDados(getBaseContext());
+        BancoDeDados bancoDeDados = new BancoDeDados(getBaseContext());
         final Cursor cursor = bancoDeDados.obterAnotacoes();
         final int contador = 1;
 
@@ -48,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
-*/
+
     }
 
     public void abrirTelaCriarNovaAnotacao(View v){

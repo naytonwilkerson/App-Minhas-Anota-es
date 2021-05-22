@@ -2,14 +2,14 @@ package com.example.anotacoes;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.database.Cursor;
 import android.os.Bundle;
 import android.content.Intent;
-import android.database.Cursor;
-
-import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import bancodedados.BancoDeDados;
 
 public class EditarAnotacoes extends AppCompatActivity {
 
@@ -17,15 +17,14 @@ public class EditarAnotacoes extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editar_anotacoes);
 
-        //@Override
-        //BancoDeDados bancoDeDados = new BancoDeDados(getBaseContext());
-        //final Cursor cursor = bancoDeDados.consultarAnotacaoPeloId(this.getIntent().getIntExtra("id", 0));
+        BancoDeDados bancoDeDados = new BancoDeDados(getBaseContext());
+        final Cursor cursor = bancoDeDados.consultarAnotacaoPeloId(this.getIntent().getIntExtra("id", 0));
 
         EditText titulo = (EditText) findViewById(R.id.campoTitulo);
         EditText conteudo = (EditText) findViewById(R.id.conteudoCampo);
 
-        //titulo.setText(cursor.getString(cursor.getColumnIndexOrThrow("titulo")));
-        //conteudo.setText(cursor.getString(cursor.getColumnIndexOrThrow("conteudo")));
+        titulo.setText(cursor.getString(cursor.getColumnIndexOrThrow("titulo")));
+        conteudo.setText(cursor.getString(cursor.getColumnIndexOrThrow("conteudo")));
 
     }
 
@@ -36,11 +35,10 @@ public class EditarAnotacoes extends AppCompatActivity {
 
     public void atualizarAnotacao(View v){
 
+        BancoDeDados bancoDeDados = new BancoDeDados(getBaseContext());
         EditText titulo = (EditText) findViewById(R.id.campoTitulo);
         EditText conteudo = (EditText) findViewById(R.id.conteudoCampo);
         Intent startNewActivity = new Intent(this, MainActivity.class);
-
-       /* BancoDeDados bancoDeDados = new BancoDeDados(getBaseContext());
 
         try {
             bancoDeDados.atualizarAnotacao(this.getIntent().getIntExtra("id",0), titulo.getText().toString(),
@@ -51,29 +49,25 @@ public class EditarAnotacoes extends AppCompatActivity {
         }catch (Exception ex){
             Toast.makeText(getApplicationContext(),"Não foi possível atualizada a Anotação, Tente Novamente",Toast.LENGTH_LONG).show();
         }
-        */
+
     }
 
 
 
     public void excluirAnotacao(View v){
 
-            EditText titulo = (EditText) findViewById(R.id.campoTitulo);
-            EditText conteudo = (EditText) findViewById(R.id.conteudoCampo);
-            Intent startNewActivity = new Intent(this, MainActivity.class);
-
-
-        /*
         BancoDeDados bancoDeDados = new BancoDeDados(getBaseContext());
+        EditText titulo = (EditText) findViewById(R.id.campoTitulo);
+        EditText conteudo = (EditText) findViewById(R.id.conteudoCampo);
+        Intent startNewActivity = new Intent(this, MainActivity.class);
 
         try {
             bancoDeDados.excluirAnotacao(this.getIntent().getIntExtra("id",0));
             Toast.makeText(getApplicationContext(),"Anotação excluida com sucesso",Toast.LENGTH_LONG).show();
             startActivity(startNewActivity);
 
-        }catch (Exception ex){
-            Toast.makeText(getApplicationContext(),"Não foi possível Excluir a Anotação, Tente Novamente",Toast.LENGTH_LONG).show();
+        }catch (Exception ex) {
+            Toast.makeText(getApplicationContext(), "Não foi possível Excluir a Anotação, Tente Novamente", Toast.LENGTH_LONG).show();
         }
-         */
     }
 }
